@@ -6,7 +6,7 @@ import { MainScene } from "./MainScene";
 export class App {
     run() {
         // create canvas
-        this.app = new PIXI.Application({resizeTo: window});
+        this.app = new PIXI.Application({ resizeTo: window });
         document.body.appendChild(this.app.view);
 
         // load sprites
@@ -15,14 +15,12 @@ export class App {
     }
 
     start() {
-        console.log(this.app.ticker.add);
-       
-        this.app.ticker.add(() => {
-            TWEEN.update();
-        });
-
         this.scene = new MainScene();
         this.app.stage.addChild(this.scene.container);
 
+        this.app.ticker.add(dt => {
+            // TWEEN.update();
+            this.scene.update(dt);
+        });
     }
 }
