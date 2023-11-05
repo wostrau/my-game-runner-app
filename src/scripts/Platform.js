@@ -7,8 +7,27 @@ export class Platform {
         this.rows = rows;
         this.cols = cols;
 
+        this.width = cols * TileSize;
+        this.height = rows * TileSize;
+
         this.createContainer(x);
         this.createTiles();
+    }
+
+    get left() {
+        return this.container.x;
+    }
+
+    get right() {
+        return this.left + this.width;
+    }
+
+    get top() {
+        return this.container.y;
+    }
+
+    get bottom() {
+        return this.top + this.height;
     }
 
     createContainer(x) {
