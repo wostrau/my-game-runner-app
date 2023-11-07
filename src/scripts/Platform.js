@@ -16,6 +16,42 @@ export class Platform {
         this.createTiles();
     }
 
+    checkCollision(hero) {
+        if (this.isCollideTop(hero)) {
+            hero.stayOnPlatform(this);
+        } else {
+            if (hero.platform === this) {
+                hero.platform = null;
+            }
+
+            if (this.isCollideLeft(hero)) {
+                hero.moveByPlatform(this);
+            }
+        }
+    }
+
+    isCollideTop(hero) {
+        return (
+            hero.right >= this.left &&
+            hero.left <= this.right &&
+            hero.bottom <= this.top &&
+            hero.nextbottom >= this.top
+        );
+    }
+
+    isCollideLeft(hero) {
+        return (
+            hero.bottom >= this.top &&
+            hero.top <= this.bottom &&
+            hero.right <= this.left &&
+            hero.right >= this.nextleft
+        );
+    }
+
+    get nextleft() {
+        return this.left + this.dx;
+    }
+
     get left() {
         return this.container.x;
     }
