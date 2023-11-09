@@ -3,14 +3,12 @@ import { Background } from "./Background";
 import { Platforms } from './Platforms';
 import { Hero } from './Hero';
 import { LabelScore } from './LabelScore';
+import { Globals } from './Globals';
+import { FinalScene } from './FinalScene';
 
 export class MainScene {
     constructor() {
         this.container = new PIXI.Container();
-        // Globals.resources.music.sound.play({
-        //     loop: true,
-        //     volume: 0.2
-        // });
         this.createBackground();
         this.createPlatforms();
         this.createHero();
@@ -41,6 +39,9 @@ export class MainScene {
         this.container.interactive = true;
         this.container.on('pointerdown', () => {
             this.hero.startJump();
+        });
+        this.hero.sprite.once('die', () => {
+            Globals.scene.start(new FinalScene());
         });
     }
 

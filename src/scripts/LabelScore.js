@@ -1,6 +1,4 @@
 import * as PIXI from 'pixi.js';
-// import { Globals } from './Globals';
-
 export class LabelScore extends PIXI.Text {
     constructor() {
         super();
