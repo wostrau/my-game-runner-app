@@ -37,7 +37,9 @@ export class Platform {
     }
 
     checkCollision(hero) {
-
+        this.diamonds.forEach(diamond => {
+            diamond.checkCollision(hero);
+        });
 
         if (this.isCollideTop(hero)) {
             hero.stayOnPlatform(this);
