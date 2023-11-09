@@ -3,6 +3,7 @@ import { Globals } from './Globals';
 
 export class Hero {
     constructor() {
+        this.score = 0;
         this.dy = 0;
         this.jumpIndex = 0;
         this.platform = null;
@@ -18,6 +19,11 @@ export class Hero {
         this.sprite.loop = true;
         this.sprite.animationSpeed = 0.1;
         this.sprite.play();
+    }
+
+    collectDiamonds() {
+        ++this.score;
+        this.sprite.emit('score');
     }
 
     startJump() {

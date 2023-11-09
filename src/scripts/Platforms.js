@@ -1,6 +1,5 @@
 import * as PIXI from 'pixi.js';
 import { Platform } from './Platform';
-import { off } from 'process';
 
 export class Platforms {
     constructor() {
